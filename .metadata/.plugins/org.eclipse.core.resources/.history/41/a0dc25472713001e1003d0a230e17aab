@@ -1,0 +1,29 @@
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import com.example.entity.Resource;
+import com.example.repository.ResourceRepo;
+
+
+@SpringBootApplication
+public class SpringDataJpaGeneratorApplication {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext context = SpringApplication.run(SpringDataJpaGeneratorApplication.class, args);
+		ResourceRepo bean = context.getBean(ResourceRepo.class);
+		
+		Resource res=new Resource();
+		//res.setResourceId(100);//no need to set RESOURCE_ID because of generator. which is already specified in 
+		                        //entity class for the primary key column
+		res.setResourceName("Rinkun");
+		res.setResourceExp("2 Years");
+		res.setResourceSkill("Java");
+		
+		Resource resource = bean.save(res);
+		System.out.println("Record inserted with::"+resource.getResourceId());
+	}
+
+}

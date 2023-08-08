@@ -1,0 +1,21 @@
+package com.example.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
+@Entity
+@Data
+@Table(name="RESOURCE_DTLS")
+public class Resource {
+	
+	
+	@Id
+	@
+	private Integer resourceId;
+	private String resourceName;
+	private String resourceExp;
+	private String resourceSkill;
+	
+
+}
